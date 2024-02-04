@@ -50,7 +50,9 @@ class PostController extends Controller
            'body' => 'required',
         ]);
         $post = Post::find($id);
-        $post->update()->route('posts.index')
+        $post->update($request->all());
+
+        return redirect()->route('posts.index')
         ->with('sucess', 'Post updated successfully.');
     }
 
